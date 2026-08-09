@@ -14,32 +14,32 @@
 #include "gpio_driver.h" 
 
 void set_pin_mode(GPIO_t *gpio_port, uint8_t pin, GPIO_pin_mode_t mode){
-    gpio_port->MODER &= ~(0x03 << (pin * 2)); // Clear the mode bits for the specified pin
-    gpio_port->MODER |= (mode << (pin * 2)); // Set the new mode for the specified pin
+    gpio_port->MODER &= ~(0x03UL << (pin * 2)); // Clear the mode bits for the specified pin
+    gpio_port->MODER |= ((uint32_t)mode << (pin * 2)); // Set the new mode for the specified pin
 }
 
 void set_pin_output_type(GPIO_t *gpio_port, uint8_t pin, GPIO_pin_output_type_t output_type){
-    gpio_port->OTYPER &= ~(0x01 << pin); // Clear the output type bit for the specified pin
-    gpio_port->OTYPER |= (output_type << pin); // Set the new output type for the specified pin
+    gpio_port->OTYPER &= ~(0x01UL << pin); // Clear the output type bit for the specified pin
+    gpio_port->OTYPER |= ((uint32_t)output_type << pin); // Set the new output type for the specified pin
 }
 
 void set_pin_speed(GPIO_t *gpio_port, uint8_t pin, GPIO_pin_speed_t speed){
-    gpio_port->OSPEEDR &= ~(0x03 << (pin * 2)); // Clear the speed bits for the specified pin
-    gpio_port->OSPEEDR |= (speed << (pin * 2)); // Set the new speed for the specified pin
+    gpio_port->OSPEEDR &= ~(0x03UL << (pin * 2)); // Clear the speed bits for the specified pin
+    gpio_port->OSPEEDR |= ((uint32_t)speed << (pin * 2)); // Set the new speed for the specified pin
 }
 
 void set_pin_pull(GPIO_t *gpio_port, uint8_t pin, GPIO_pin_pull_t pull){
-    gpio_port->PUPDR &= ~(0x03 << (pin * 2)); // Clear the pull-up/pull-down bits for the specified pin
-    gpio_port->PUPDR |= (pull << (pin * 2)); // Set the new pull-up/pull-down configuration for the specified pin
+    gpio_port->PUPDR &= ~(0x03UL << (pin * 2)); // Clear the pull-up/pull-down bits for the specified pin
+    gpio_port->PUPDR |= ((uint32_t)pull << (pin * 2)); // Set the new pull-up/pull-down configuration for the specified pin
 }
 
 void set_pin_alternate_function(GPIO_t *gpio_port, uint8_t pin, GPIO_pin_alternate_function_t af){
     if(pin < 8){
-        gpio_port->AFRL &= ~(0x0F << (pin * 4)); // Clear the alternate function bits for the specified pin
-        gpio_port->AFRL |= (af << (pin * 4)); // Set the new alternate function for the specified pin
+        gpio_port->AFRL &= ~(0x0FUL << (pin * 4)); // Clear the alternate function bits for the specified pin
+        gpio_port->AFRL |= ((uint32_t)af << (pin * 4)); // Set the new alternate function for the specified pin
     } else {
-        gpio_port->AFRH &= ~(0x0F << ((pin - 8) * 4)); // Clear the alternate function bits for the specified pin
-        gpio_port->AFRH |= (af << ((pin - 8) * 4)); // Set the new alternate function for the specified pin
+        gpio_port->AFRH &= ~(0x0FUL << ((pin - 8) * 4)); // Clear the alternate function bits for the specified pin
+        gpio_port->AFRH |= ((uint32_t)af << ((pin - 8) * 4)); // Set the new alternate function for the specified pin
     }
 }
 
