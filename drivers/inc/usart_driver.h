@@ -16,13 +16,13 @@
  * @brief USART Register structure definition
  */
 typedef struct{
-    volatile uint32_t SR;
-    volatile uint32_t DR;
-    volatile uint32_t BRR;
-    volatile uint32_t CR1;
-    volatile uint32_t CR2;
-    volatile uint32_t CR3;
-    volatile uint32_t GTPR;
+    volatile uint32_t SR; /**< Status register */
+    volatile uint32_t DR; /**< Data register */
+    volatile uint32_t BRR; /**< Baud rate register */
+    volatile uint32_t CR1; /**< Control register 1 */
+    volatile uint32_t CR2; /**< Control register 2 */
+    volatile uint32_t CR3; /**< Control register 3 */
+    volatile uint32_t GTPR; /**< Guard time and prescaler register */
 } USART_t;
 
 /** 
