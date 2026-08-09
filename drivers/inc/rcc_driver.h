@@ -127,7 +127,6 @@ typedef enum {
     RCC_APB1_CEC = 27UL,
     RCC_APB1_PWR = 28UL,
     RCC_APB1_DAC = 29UL,       
-
 } apb1_clock_port_t;
 
 /**
